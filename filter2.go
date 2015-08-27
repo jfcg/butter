@@ -12,6 +12,16 @@ func (f *filter2) Next(u float64) float64 {
 	return y
 }
 
+func (f *filter2) NextS(u, y []float64) {
+	n := len(u)
+	if n > len(y) {
+		n = len(y)
+	}
+	for i := 0; i < n; i++ {
+		y[i] = f.Next(u[i])
+	}
+}
+
 func (f *filter2) Disable() {
 	f.b0 = 1
 	f.s1, f.s2, f.b1, f.b2, f.a1, f.a2 = 0, 0, 0, 0, 0, 0
