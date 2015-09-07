@@ -82,9 +82,6 @@ func Test2(tst *testing.T) {
 				fl[k].Reset(u, -.8+float64(k)*.32)
 			}
 			fmt.Print(fl[k].Next(u), " ")
-			if i == 11*16 { // disable at t=2.75
-				fl[k].Disable()
-			}
 		}
 		fmt.Println(rl.Next(u))
 	}

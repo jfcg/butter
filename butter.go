@@ -9,7 +9,6 @@ package butter
 type Filter interface {
 	Next(float64) float64 // Runs filter one step with input u and returns output
 	NextS(u, y []float64) // Runs filter on a slice of input & returns result in y. May overlap
-	Disable()             // output=input, filter becomes not resettable
 	Reset(u, y float64)   // Reset filter such that y will be the next output
 }
 

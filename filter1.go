@@ -22,15 +22,7 @@ func (f *filter1) NextS(u, y []float64) {
 	}
 }
 
-func (f *filter1) Disable() {
-	f.b0 = 1
-	f.s, f.b1, f.a1 = 0, 0, 0
-}
-
 func (f *filter1) Reset(u, y float64) {
-	if f.b0 == 1 { // b0=1 only when first order filter is disabled
-		return
-	}
 	f.s = (y - f.b0*u) / (f.b1 - f.b0*f.a1) // division is safe
 }
 

@@ -22,18 +22,9 @@ func (f *filter2) NextS(u, y []float64) {
 	}
 }
 
-func (f *filter2) Disable() {
-	f.b0 = 1
-	f.s1, f.s2, f.b1, f.b2, f.a1, f.a2 = 0, 0, 0, 0, 0, 0
-}
-
 func (f *filter2) Reset(u, y float64) {
-	if f.b0 == 1 { // b0=1 only when second order filter is disabled
-		return
-	}
 	// Internal states will be in arithmetic progression except HP
 	// All divisions are safe
-
 	hp := f.b1 == -2*f.b0 // HP?
 
 	if hp {
