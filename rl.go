@@ -1,11 +1,11 @@
 package butter
 
-type RateLimit struct {
+type rateLimit struct {
 	pu, mc float64 // previous input, max change per step
 }
 
 // Runs rate limiter one step with input u and returns output
-func (rl *RateLimit) Next(u float64) float64 {
+func (rl *rateLimit) Next(u float64) float64 {
 	d := u - rl.pu // input - prev_input
 	if d > rl.mc {
 		u = rl.pu + rl.mc
@@ -16,7 +16,7 @@ func (rl *RateLimit) Next(u float64) float64 {
 	return u
 }
 
-func (rl *RateLimit) NextS(u, y []float64) {
+func (rl *rateLimit) NextS(u, y []float64) {
 	n := len(u)
 	if n > len(y) {
 		n = len(y)
@@ -26,11 +26,16 @@ func (rl *RateLimit) NextS(u, y []float64) {
 	}
 }
 
+func (rl *rateLimit) Reset(u, y float64) {
+	rl.pu = y
+}
+
 // Creates a rate limiter with initial input and max change per step. You can calculate mc with:
 // 	mc = (desired rate limit in 1/sec) / (sample rate in hz)
-func NewRateLimit(iu, mc float64) *RateLimit {
+// Note: Reset(u,y) on a rate limiter sets internal state to y (does not use u). The next output will be in [y-mc, y+mc].
+func NewRateLimit(iu, mc float64) Filter {
 	if mc > 0 {
-		return &RateLimit{iu, mc}
+		return &rateLimit{iu, mc}
 	}
 	return nil
 }

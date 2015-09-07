@@ -65,11 +65,11 @@ func Test2(tst *testing.T) {
 		NewLowPass2(wc),
 		NewBandPass2(wc/2, 2*wc),
 		NewBandStop2(wc/2, 2*wc),
+		NewRateLimit(0, wc),
 	}
-	fmt.Println("u", "hp1", "lp1", "hp2", "lp2", "bp2", "bs2", "rl")
+	fmt.Println("u  hp1  lp1  hp2  lp2  bp2  bs2  rl")
 	n := 3 * 64 // 3 seconds
 	t := .0     // time
-	rl := NewRateLimit(0, wc)
 
 	for i := 0; i < n; i++ {
 		t += dt
@@ -83,6 +83,6 @@ func Test2(tst *testing.T) {
 			}
 			fmt.Print(fl[k].Next(u), " ")
 		}
-		fmt.Println(rl.Next(u))
+		fmt.Println()
 	}
 }
