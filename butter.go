@@ -16,9 +16,15 @@ package butter
 
 // Filter represents a generic filter
 type Filter interface {
-	Next(float64) float64 // Runs filter one step with input u and returns output
-	NextS(u, y []float64) // Runs filter on a slice of input & returns result in y. May overlap
-	Reset(u, y float64)   // Reset filter such that y will be the next output
+	// Next runs filter one step with input u and returns output
+	Next(float64) float64
+
+	// NextS runs filter on a slice of input & returns result in y. They may overlap.
+	NextS(u, y []float64)
+
+	// Reset sets internals of filter such that y will be the next output assuming
+	// u is the next input approximately.
+	Reset(u, y float64)
 }
 
 func valid(wc float64) bool {
@@ -26,7 +32,7 @@ func valid(wc float64) bool {
 }
 
 func valid2(wc, wd float64) bool {
-	return .0001 < wc && wc < wd && wd < 3.1415
+	return .0001 < wc && wc+.0001 < wd && wd < 3.1415
 }
 
 // returns prewarped analog cut-off * dt, given desired cut-off * dt
