@@ -1,3 +1,9 @@
+/*	Copyright (c) 2020, Serhat Şevki Dinçer.
+	This Source Code Form is subject to the terms of the Mozilla Public
+	License, v. 2.0. If a copy of the MPL was not distributed with this
+	file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
 package butter
 
 // First order filter
@@ -26,7 +32,7 @@ func (f *filter1) Reset(u, y float64) {
 	f.s = (y - f.b0*u) / (f.b1 - f.b0*f.a1) // division is safe
 }
 
-// Create first order Low-Pass filter
+// NewLowPass1 creates first order Low-Pass filter
 func NewLowPass1(wc float64) Filter {
 	if !valid(wc) {
 		return nil
@@ -42,7 +48,7 @@ func NewLowPass1(wc float64) Filter {
 	return &f
 }
 
-// Create first order High-Pass filter
+// NewHighPass1 creates first order High-Pass filter
 func NewHighPass1(wc float64) Filter {
 	if !valid(wc) {
 		return nil

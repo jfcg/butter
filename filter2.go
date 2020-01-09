@@ -1,3 +1,9 @@
+/*	Copyright (c) 2020, Serhat Şevki Dinçer.
+	This Source Code Form is subject to the terms of the Mozilla Public
+	License, v. 2.0. If a copy of the MPL was not distributed with this
+	file, You can obtain one at http://mozilla.org/MPL/2.0/.
+*/
+
 package butter
 
 // Second order filter
@@ -43,7 +49,7 @@ func (f *filter2) Reset(u, y float64) {
 	}
 }
 
-// Create second order Low-Pass filter
+// NewLowPass2 creates second order Low-Pass filter
 func NewLowPass2(wc float64) Filter {
 	if !valid(wc) {
 		return nil
@@ -63,7 +69,7 @@ func NewLowPass2(wc float64) Filter {
 	return &f
 }
 
-// Create second order High-Pass filter
+// NewHighPass2 creates second order High-Pass filter
 func NewHighPass2(wc float64) Filter {
 	if !valid(wc) {
 		return nil
@@ -83,7 +89,7 @@ func NewHighPass2(wc float64) Filter {
 	return &f
 }
 
-// Create second order Band-Pass filter
+// NewBandPass2 creates second order Band-Pass filter
 func NewBandPass2(wc, wd float64) Filter {
 	if !valid2(wc, wd) {
 		return nil
@@ -103,7 +109,7 @@ func NewBandPass2(wc, wd float64) Filter {
 	return &f
 }
 
-// Create second order Band-Stop filter
+// NewBandStop2 creates second order Band-Stop filter
 func NewBandStop2(wc, wd float64) Filter {
 	if !valid2(wc, wd) {
 		return nil
