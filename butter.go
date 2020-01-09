@@ -19,7 +19,8 @@ type Filter interface {
 	// Next runs filter one step with input u and returns output
 	Next(float64) float64
 
-	// NextS runs filter on a slice of input & returns result in y. They may overlap.
+	// NextS runs filter on a slice of input u and writes result in output y.
+	// Input and output can be the same buffer.
 	NextS(u, y []float64)
 
 	// Reset sets internals of filter such that y will be the next output assuming

@@ -9,3 +9,6 @@ wc = 2 * pi * (desired cutoff in hz) / (sample rate in hz) =
 ```
 Internally cutoff parameters are prewarped for correct operation. All New\*() functions
 return nil if parameters are invalid.
+
+### Support
+If you use butter and like it, please support via ETH:`0x464B840ee70bBe7962b90bD727Aac172Fa8B9C15`
