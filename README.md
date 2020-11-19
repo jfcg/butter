@@ -1,4 +1,4 @@
-## butter [![Go Report Card](https://goreportcard.com/badge/github.com/jfcg/butter)](https://goreportcard.com/report/github.com/jfcg/butter) [![go.dev ref](/.github/godev.svg)](https://pkg.go.dev/github.com/jfcg/butter)
+## butter [![Go Report Card](https://goreportcard.com/badge/github.com/jfcg/butter)](https://goreportcard.com/report/github.com/jfcg/butter) [![go.dev ref](https://raw.githubusercontent.com/jfcg/.github/main/godev.svg)](https://pkg.go.dev/github.com/jfcg/butter)
 Digital Filter Library for Signal Processing.
 
 This library consists of easy-to-use Butterworth first & second order digital filters.
