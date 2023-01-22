@@ -8,8 +8,10 @@
 //
 // This library consists of easy-to-use Butterworth first & second order digital filters.
 // You can calculate cutoff parameters with:
-// 	wc = 2 * pi * (desired cutoff in Hz) / (sample rate in Hz) =
-//  	(desired cutoff in rad/sec) * (sample period in sec)
+//
+//	wc = 2 * pi * (desired cutoff in Hz) / (sample rate in Hz) =
+//		(desired cutoff in rad/sec) * (sample period in sec)
+//
 // Internally cutoff parameters are prewarped for correct operation.
 // All New*() functions return nil if parameters are invalid.
 package butter

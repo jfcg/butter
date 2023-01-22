@@ -38,7 +38,9 @@ func (rl *rateLimit) Reset(u, y float64) {
 
 // NewRateLimit creates a rate limiter with initial input and max change per step.
 // You can calculate mc with:
-// 	mc = (desired rate limit in 1/sec) / (sample rate in Hz)
+//
+//	mc = (desired rate limit in 1/sec) / (sample rate in Hz)
+//
 // Note: Reset(u,y) on a rate limiter sets internal state to y (does not use u).
 // The next output will be in [y-mc, y+mc].
 func NewRateLimit(iu, mc float64) Filter {
